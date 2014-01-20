@@ -114,7 +114,7 @@
       }
     };
   }])
-  .directive('sortableHeader', function() {
+  .directive('sortableHeader', ['$parse',function($parse) {
     return {
       transclude: true,
       scope: true,
@@ -129,14 +129,15 @@
           '</span>' +
         '</div>',
       link: function(scope, elm, attrs, tableController) {
+        var getCol = $parse(attrs.col);
         scope.isActive = function() {
-          return tableController.getSortCol() === attrs.col;
+          return tableController.getSortCol() === getCol(scope);
         };
         scope.toggleSort = function() {
           if(scope.isActive()) {
             tableController.toggleSort();
           } else {
-            tableController.setSortCol(attrs.col);
+            tableController.setSortCol(getCol(scope));
           }
           tableController.doSort(scope[attrs.comparatorFn]);
         };
@@ -156,6 +157,6 @@
         };
       }
     };
-  })
+  }])
   ;
 })(angular);

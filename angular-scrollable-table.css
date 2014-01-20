@@ -19,6 +19,21 @@
         padding: 0;
     }
 
+    .icon-arrow-up,
+    .icon-arrow-down {
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        width: 16px;
+        height: 16px;
+    }
+    .icon-arrow-up::before {
+        content: '^';
+    }
+    .icon-arrow-down::before {
+        content: 'v';
+    }
+
     .scrollArea table .th-inner {
         overflow: hidden;
         text-overflow: ellipsis;

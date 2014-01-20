@@ -619,11 +619,13 @@
 </script>
 <link rel="stylesheet" href="angular-scrollable-table.css">
 <body ng-app="myApp" ng-controller="TableController">
-    <scrollable-table watch="data">
+    <scrollable-table watch="data.data">
         <table class="grid hover">
             <thead>
                 <tr>
-                    <th ng-repeat="head in data.cols">{{head}}</th>
+                    <th ng-repeat="head in data.cols"
+                        sortable-header col="$index"
+                    >{{head}}</th>
                 </tr>
             </thead>
             <tr ng-repeat="line in data.data">
