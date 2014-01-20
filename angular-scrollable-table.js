@@ -129,7 +129,7 @@
           '</span>' +
         '</div>',
       link: function(scope, elm, attrs, tableController) {
-        var getCol = $parse(attrs.col);
+        var getCol = $parse(attrs.sortableHeader);
         scope.isActive = function() {
           return tableController.getSortCol() === getCol(scope);
         };
