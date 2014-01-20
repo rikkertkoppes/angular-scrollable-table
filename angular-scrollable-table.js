@@ -96,11 +96,12 @@
 
         $timeout(function() {
           //template rendered
-          offset = $element.find('thead tr').height();
-          $element.find(".scrollableContainer").css('paddingTop',offset);
           //wrap headers
-          $timeout(ctrl.fixHeaderWidths);
-        });
+          ctrl.fixHeaderWidths();
+          //calculate offset
+          offset = $element.find('.th-inner').outerHeight();
+          $element.find(".scrollableContainer").css('paddingTop',offset);
+        },100);
 
         $scope.$on('rowSelected', function(event, rowId) {
           var scrollArea = $element.find(".scrollArea");
