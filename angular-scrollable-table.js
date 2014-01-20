@@ -11,7 +11,6 @@
         sortFn: '='
       },
       template: '<div class="scrollableContainer">' +
-          '<div class="headerSpacer"></div>' +
           '<div class="scrollArea" ng-transclude></div>' +
         '</div>',
       controller: ['$scope', '$element', '$attrs', function($scope, $element, $attrs) {
