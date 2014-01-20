@@ -60,9 +60,11 @@
             var width = el.parent().width() - padding;
             // if it's the last header, add space for the scrollbar equivalent
             var lastCol = $element.find("table th:visible:last")[0] == el.parent()[0];
-            var hasScrollbar = $element.find(".scrollArea").height() < $element.find("table").height();
+            var scrollArea = $element.find(".scrollArea");
+            var hasScrollbar = scrollArea.height() < $element.find("table").height();
+            var scrollbarWidth = scrollArea.width() - scrollArea[0].clientWidth;
             if(lastCol && hasScrollbar) {
-              width += 18;
+              width += scrollbarWidth;
             }
             el.css("width", width);
             var title = el.parent().attr("title");
