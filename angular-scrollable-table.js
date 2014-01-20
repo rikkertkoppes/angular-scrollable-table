@@ -14,22 +14,23 @@
           '<div class="scrollArea" ng-transclude></div>' +
         '</div>',
       controller: ['$scope', '$element', '$attrs', function($scope, $element, $attrs) {
+        var ctrl = this;
         // define an API for child directives to view and modify sorting parameters
-        this.getSortCol = function() {
+        ctrl.getSortCol = function() {
           return $scope.sortAttr;
         };
-        this.isAsc = function() {
+        ctrl.isAsc = function() {
           return $scope.asc;
         };
-        this.setSortCol = function(col) {
+        ctrl.setSortCol = function(col) {
           $scope.asc = true;
           $scope.sortAttr = col;
         };
-        this.toggleSort = function() {
+        ctrl.toggleSort = function() {
           $scope.asc = !$scope.asc;
         };
 
-        this.doSort = function(comparatorFn) {
+        ctrl.doSort = function(comparatorFn) {
           if(comparatorFn) {
             $scope.rows.sort(function(r1, r2) {
               var compared = comparatorFn(r1, r2);
@@ -48,27 +49,7 @@
           return x > y ? 1 : -1;
         }
 
-        var offset = $element.find(".headerSpacer").height();
-        $scope.$on('rowSelected', function(event, rowId) {
-          var scrollArea = $element.find(".scrollArea");
-          var row = scrollArea.find("table tr[row-id='" + rowId + "']");
-          if(row.length === 1) {
-            var currentScrollTop = scrollArea.scrollTop();
-            $element.find(".scrollArea").scrollTop(currentScrollTop + row.position().top - offset);
-          }
-        });
-
-        // Set fixed widths for the table headers in case the text overflows.
-        // There's no callback for when rendering is complete, so check the width of the table
-        // periodically -- see http://stackoverflow.com/questions/11125078
-        function checkIfRendered() {
-          if($element.find("table:visible").length === 0) {
-            $timeout(checkIfRendered, 100);
-          } else {
-            fixHeaderWidths();
-          }
-        }
-        function fixHeaderWidths() {
+        ctrl.fixHeaderWidths = function() {
           if(!$element.find("thead th .th-inner").length)
             $element.find("thead th").wrapInner('<div class="th-inner"></div>');
 
@@ -92,21 +73,35 @@
             }
             el.attr("title", title);
           });
-        }
+        };
 
-        $(window).resize(fixHeaderWidths);
+        $(window).resize(ctrl.fixHeaderWidths);
 
         // when the data model changes, fix the header widths.  See the comments here:
         // http://docs.angularjs.org/api/ng.$timeout
         $scope.$watch('rows', function(newValue, oldValue) {
           if(newValue) {
-            $timeout(checkIfRendered);
+            $timeout(ctrl.fixHeaderWidths);
           }
         });
 
         $scope.asc = !$attrs.hasOwnProperty("desc");
         $scope.sortAttr = $attrs.sortAttr;
-      }]
+      }],
+      link: function($scope,$element,attrs,ctrl) {
+        var offset = $element.find(".headerSpacer").height();
+        $element.find(".scrollableContainer").css('paddingTop',offset);
+        $scope.$on('rowSelected', function(event, rowId) {
+          var scrollArea = $element.find(".scrollArea");
+          var row = scrollArea.find("table tr[row-id='" + rowId + "']");
+          if(row.length === 1) {
+            var currentScrollTop = scrollArea.scrollTop();
+            $element.find(".scrollArea").scrollTop(currentScrollTop + row.position().top - offset);
+          }
+        });
+
+        ctrl.fixHeaderWidths();
+      }
     };
   }])
   .directive('sortableHeader', function() {
