@@ -1,0 +1,39 @@
+    .scrollableContainer {
+        height: 300px;
+        position: relative;
+        padding-top: 33px;
+        margin: 12px;
+        border: 1px solid silver;
+    }
+    .scrollableContainer .headerSpacer {
+        display: none;
+    }
+    .scrollArea {
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .scrollArea table {
+        width: 100%;
+    }
+
+    .scrollArea table thead th {
+        position: static;
+        padding: 0;
+        border: none;
+    }
+
+    .scrollArea table .th-inner {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        position: absolute;
+        top: 0;
+        padding: 6px 10px;
+        border-left: 1px solid silver;
+        border-bottom: 1px solid silver;
+    }
+    .scrollArea table tr th:first-child .th-inner {
+        border-left: none;
+    }

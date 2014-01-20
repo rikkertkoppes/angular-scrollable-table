@@ -1,0 +1,637 @@
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js"></script>
+<script src="angular-scrollable-table.js"></script>
+<script>
+    angular.module('myApp', ['scrollable-table'])
+    .controller('TableController',function($scope) {
+        //data generated on http://www.generatedata.com/
+        $scope.data = {
+            "cols": [
+                "Name",
+                "Phone",
+                "Company",
+                "CC"
+            ],
+            "data": [
+                [
+                    "Mariko",
+                    "1-258-531-8647",
+                    "Dolor Quisque Tincidunt LLP",
+                    "4307351259142167"
+                ],
+                [
+                    "Mona",
+                    "1-714-598-6844",
+                    "Pede Sagittis Augue Limited",
+                    "5363603876209811"
+                ],
+                [
+                    "Hedy",
+                    "1-447-665-0232",
+                    "Montes Nascetur Ridiculus Corp.",
+                    "5184334570779468"
+                ],
+                [
+                    "Michelle",
+                    "1-815-938-0489",
+                    "Cras Sed Leo LLC",
+                    "376770181549249"
+                ],
+                [
+                    "Nelle",
+                    "1-951-474-6976",
+                    "Nec Consulting",
+                    "5146331814392467"
+                ],
+                [
+                    "Odessa",
+                    "1-278-327-4982",
+                    "Id Nunc Interdum Incorporated",
+                    "5350690152584578"
+                ],
+                [
+                    "Lynn",
+                    "1-173-847-6764",
+                    "Donec Fringilla Inc.",
+                    "371596738657917"
+                ],
+                [
+                    "Rhonda",
+                    "1-997-321-3321",
+                    "Sed Neque Sed LLC",
+                    "373642975149210"
+                ],
+                [
+                    "Chava",
+                    "1-435-404-8316",
+                    "Sed Company",
+                    "5161717735514979"
+                ],
+                [
+                    "Macey",
+                    "1-708-524-9343",
+                    "Dictum LLP",
+                    "5146870065722617"
+                ],
+                [
+                    "Montana",
+                    "1-927-365-9347",
+                    "Neque Et Nunc LLC",
+                    "347733771646397"
+                ],
+                [
+                    "Priscilla",
+                    "1-595-870-4727",
+                    "Eu Limited",
+                    "345814970471890"
+                ],
+                [
+                    "Nichole",
+                    "1-597-511-1682",
+                    "Consectetuer Adipiscing Consulting",
+                    "343161418819334"
+                ],
+                [
+                    "Quynn",
+                    "1-610-698-8538",
+                    "Dolor Institute",
+                    "5170627835965711"
+                ],
+                [
+                    "Quemby",
+                    "1-548-260-1300",
+                    "Nunc In LLC",
+                    "349760291462292"
+                ],
+                [
+                    "Desiree",
+                    "1-323-499-9970",
+                    "Lacus Inc.",
+                    "5119323195340115"
+                ],
+                [
+                    "Desirae",
+                    "1-666-808-3922",
+                    "Duis LLC",
+                    "5396899619260809"
+                ],
+                [
+                    "Jaden",
+                    "1-934-509-7710",
+                    "Enim Condimentum Eget Limited",
+                    "5175375003856600"
+                ],
+                [
+                    "Clare",
+                    "1-297-191-5343",
+                    "Tempus Corporation",
+                    "5191905040764249"
+                ],
+                [
+                    "Aurora",
+                    "1-452-988-3610",
+                    "Eget Laoreet Posuere Industries",
+                    "5337569398884665"
+                ],
+                [
+                    "Noelle",
+                    "1-514-824-6326",
+                    "Semper Dui Lectus PC",
+                    "5457002345765942"
+                ],
+                [
+                    "Catherine",
+                    "1-685-381-7597",
+                    "Est Company",
+                    "4784433393646034"
+                ],
+                [
+                    "Nita",
+                    "1-540-306-3357",
+                    "Et Ipsum Cursus LLP",
+                    "4110861088661471"
+                ],
+                [
+                    "Amela",
+                    "1-789-890-5428",
+                    "Suspendisse Commodo Corp.",
+                    "5144502389929251"
+                ],
+                [
+                    "Marcia",
+                    "1-771-315-5843",
+                    "Ut Sem Nulla Institute",
+                    "342286036321428"
+                ],
+                [
+                    "Debra",
+                    "1-234-627-8421",
+                    "Massa Quisque Industries",
+                    "379425734188406"
+                ],
+                [
+                    "Breanna",
+                    "1-182-191-1583",
+                    "Pellentesque Sed LLP",
+                    "5199138063373971"
+                ],
+                [
+                    "Maite",
+                    "1-853-671-8111",
+                    "Fermentum Convallis Inc.",
+                    "5185415548705494"
+                ],
+                [
+                    "Kirby",
+                    "1-297-143-0682",
+                    "Sagittis Limited",
+                    "5181241151127038"
+                ],
+                [
+                    "Carly",
+                    "1-895-732-4513",
+                    "Nibh Enim Gravida Corporation",
+                    "345888424073344"
+                ],
+                [
+                    "Caryn",
+                    "1-743-816-9211",
+                    "Molestie In LLC",
+                    "5159529953175223"
+                ],
+                [
+                    "Dominique",
+                    "1-223-773-4366",
+                    "Massa Corporation",
+                    "4119762770412481"
+                ],
+                [
+                    "Roanna",
+                    "1-329-216-0791",
+                    "Senectus LLP",
+                    "5322488116943278"
+                ],
+                [
+                    "Tamekah",
+                    "1-155-111-9383",
+                    "Mattis Integer Eu Limited",
+                    "5143864523996591"
+                ],
+                [
+                    "Sigourney",
+                    "1-161-524-6073",
+                    "Sed Ltd",
+                    "376967809253374"
+                ],
+                [
+                    "Keelie",
+                    "1-639-439-6667",
+                    "Nec Consulting",
+                    "5358819931335741"
+                ],
+                [
+                    "Haviva",
+                    "1-704-237-4200",
+                    "Sed Industries",
+                    "5384554676581173"
+                ],
+                [
+                    "Georgia",
+                    "1-982-676-1999",
+                    "In Cursus Institute",
+                    "4756454791128633"
+                ],
+                [
+                    "Yeo",
+                    "1-341-256-2012",
+                    "Odio A Purus Consulting",
+                    "5385249682869760"
+                ],
+                [
+                    "Veda",
+                    "1-281-703-0225",
+                    "Nullam Ut Nisi PC",
+                    "374627241213802"
+                ],
+                [
+                    "Ivory",
+                    "1-479-713-0752",
+                    "Eu Dui Cum Inc.",
+                    "372251554487735"
+                ],
+                [
+                    "Denise",
+                    "1-392-343-1024",
+                    "Parturient Montes Inc.",
+                    "346258739933371"
+                ],
+                [
+                    "Zena",
+                    "1-639-677-0879",
+                    "Nulla At Corporation",
+                    "379442211685707"
+                ],
+                [
+                    "Raven",
+                    "1-724-369-7012",
+                    "Convallis Est LLP",
+                    "5144129733070733"
+                ],
+                [
+                    "Melodie",
+                    "1-319-606-4045",
+                    "Vel Institute",
+                    "373321523529942"
+                ],
+                [
+                    "Bryar",
+                    "1-121-122-6166",
+                    "Pede Corp.",
+                    "5192025031521919"
+                ],
+                [
+                    "Mollie",
+                    "1-966-504-7828",
+                    "Integer PC",
+                    "5353452928410841"
+                ],
+                [
+                    "Leah",
+                    "1-323-340-6164",
+                    "Ornare Fusce Mollis Institute",
+                    "5230114854560238"
+                ],
+                [
+                    "Yen",
+                    "1-694-418-6612",
+                    "Molestie Pharetra Incorporated",
+                    "5367400035378522"
+                ],
+                [
+                    "Bo",
+                    "1-877-685-2894",
+                    "Ligula Elit Foundation",
+                    "374535796917509"
+                ],
+                [
+                    "Yvonne",
+                    "1-994-622-4986",
+                    "Leo Cras Vehicula Foundation",
+                    "5357684253486804"
+                ],
+                [
+                    "Nomlanga",
+                    "1-300-641-8413",
+                    "Erat Limited",
+                    "4244023811444645"
+                ],
+                [
+                    "Carly",
+                    "1-854-601-4199",
+                    "Quisque Purus Sapien Institute",
+                    "5123801308581606"
+                ],
+                [
+                    "Frances",
+                    "1-889-959-5491",
+                    "Dui Corporation",
+                    "4587703623529522"
+                ],
+                [
+                    "Carolyn",
+                    "1-643-231-2424",
+                    "A Malesuada Consulting",
+                    "5358904771115639"
+                ],
+                [
+                    "Nyssa",
+                    "1-886-688-6682",
+                    "Sem Ut Limited",
+                    "4366616717958826"
+                ],
+                [
+                    "Jaden",
+                    "1-346-111-2000",
+                    "Ac Limited",
+                    "5153027704278937"
+                ],
+                [
+                    "Teagan",
+                    "1-649-859-6994",
+                    "Ipsum Dolor Sit Corporation",
+                    "5458042834489601"
+                ],
+                [
+                    "Audrey",
+                    "1-826-625-0273",
+                    "Primis Foundation",
+                    "342207722050137"
+                ],
+                [
+                    "Kessie",
+                    "1-311-483-3974",
+                    "Nullam PC",
+                    "5234268855405977"
+                ],
+                [
+                    "Montana",
+                    "1-992-221-9394",
+                    "Magna Incorporated",
+                    "4169270752230656"
+                ],
+                [
+                    "Molly",
+                    "1-684-482-4312",
+                    "Molestie LLC",
+                    "5171607173718515"
+                ],
+                [
+                    "Yen",
+                    "1-340-734-0808",
+                    "Mauris LLC",
+                    "373624513248910"
+                ],
+                [
+                    "Daphne",
+                    "1-225-783-7924",
+                    "Maecenas Consulting",
+                    "5329415192166341"
+                ],
+                [
+                    "Caryn",
+                    "1-706-919-0395",
+                    "Dui Quis Accumsan Ltd",
+                    "5315471697715110"
+                ],
+                [
+                    "Lydia",
+                    "1-285-412-0758",
+                    "Nibh Enim Corp.",
+                    "5195923225022859"
+                ],
+                [
+                    "Sopoline",
+                    "1-305-460-1738",
+                    "Accumsan Laoreet Ipsum Corporation",
+                    "377823512354402"
+                ],
+                [
+                    "Keiko",
+                    "1-106-676-4127",
+                    "Mattis Velit Consulting",
+                    "4900263742962858"
+                ],
+                [
+                    "Mariam",
+                    "1-808-794-6405",
+                    "Posuere Vulputate Lacus Consulting",
+                    "5271568704177628"
+                ],
+                [
+                    "Hanna",
+                    "1-181-129-7312",
+                    "Ac Mi Eleifend PC",
+                    "5363484806413763"
+                ],
+                [
+                    "Flavia",
+                    "1-777-368-4082",
+                    "Sem Corporation",
+                    "4362987864343441"
+                ],
+                [
+                    "Grace",
+                    "1-821-619-5957",
+                    "Consectetuer PC",
+                    "5284084249055017"
+                ],
+                [
+                    "Emerald",
+                    "1-849-866-2776",
+                    "Pharetra Inc.",
+                    "5326072205747475"
+                ],
+                [
+                    "Jolene",
+                    "1-251-862-1268",
+                    "Amet Consectetuer Adipiscing Corporation",
+                    "5130720903333279"
+                ],
+                [
+                    "Tallulah",
+                    "1-995-415-6171",
+                    "Volutpat LLC",
+                    "5428213982125746"
+                ],
+                [
+                    "Teagan",
+                    "1-936-583-1736",
+                    "Ut Eros Non Limited",
+                    "374928744108883"
+                ],
+                [
+                    "Celeste",
+                    "1-155-313-2040",
+                    "Varius Et Euismod Inc.",
+                    "5122745934855190"
+                ],
+                [
+                    "Xena",
+                    "1-637-749-0314",
+                    "Maecenas Libero Est Limited",
+                    "377166691053650"
+                ],
+                [
+                    "Martina",
+                    "1-383-292-7404",
+                    "Interdum Sed Auctor Industries",
+                    "4694022956490513"
+                ],
+                [
+                    "Halla",
+                    "1-153-548-2655",
+                    "Dolor Corporation",
+                    "5180145970233712"
+                ],
+                [
+                    "Latifah",
+                    "1-582-502-8991",
+                    "Phasellus At PC",
+                    "341702487971161"
+                ],
+                [
+                    "Chantale",
+                    "1-858-427-4712",
+                    "Placerat Augue Ltd",
+                    "5327086549135853"
+                ],
+                [
+                    "Zelda",
+                    "1-124-422-3774",
+                    "Felis PC",
+                    "349454835142000"
+                ],
+                [
+                    "Tana",
+                    "1-742-832-9325",
+                    "Quam Corp.",
+                    "373082618829324"
+                ],
+                [
+                    "Kirby",
+                    "1-215-428-6743",
+                    "Nunc Mauris Morbi Company",
+                    "5175856911530712"
+                ],
+                [
+                    "Jessamine",
+                    "1-597-260-3978",
+                    "Nunc Quisque Incorporated",
+                    "345345312253579"
+                ],
+                [
+                    "Kylan",
+                    "1-257-952-7255",
+                    "Integer Tincidunt Incorporated",
+                    "5357487860131076"
+                ],
+                [
+                    "Noelle",
+                    "1-153-471-1409",
+                    "Nibh Limited",
+                    "342888461580964"
+                ],
+                [
+                    "Ursula",
+                    "1-674-143-7846",
+                    "Amet LLP",
+                    "4114959570253268"
+                ],
+                [
+                    "Zenaida",
+                    "1-672-880-9130",
+                    "Tempus Company",
+                    "5369565080632456"
+                ],
+                [
+                    "Martha",
+                    "1-316-475-0108",
+                    "Vulputate Risus A Company",
+                    "345315347121566"
+                ],
+                [
+                    "Shea",
+                    "1-339-245-4002",
+                    "Tellus Faucibus Associates",
+                    "5118423032290302"
+                ],
+                [
+                    "Hanae",
+                    "1-902-959-4963",
+                    "Phasellus Dolor Foundation",
+                    "344117225435095"
+                ],
+                [
+                    "Nayda",
+                    "1-131-404-7064",
+                    "Sit Amet Ultricies LLC",
+                    "377939860370479"
+                ],
+                [
+                    "Sloane",
+                    "1-985-469-9815",
+                    "Parturient Montes Company",
+                    "373783822445666"
+                ],
+                [
+                    "Octavia",
+                    "1-216-724-6365",
+                    "Pede Sagittis Augue Ltd",
+                    "5146643952066075"
+                ],
+                [
+                    "Linda",
+                    "1-763-203-2926",
+                    "Pharetra Quisque Company",
+                    "4753218287695190"
+                ],
+                [
+                    "Hilary",
+                    "1-202-102-2526",
+                    "Eu Accumsan Ltd",
+                    "5116073348000646"
+                ],
+                [
+                    "Tashya",
+                    "1-554-379-5907",
+                    "Sem Vitae Industries",
+                    "5136670326404270"
+                ],
+                [
+                    "Bianca",
+                    "1-793-886-6424",
+                    "Risus Quisque Libero PC",
+                    "5146890532947142"
+                ]
+            ]
+        };
+    });
+</script>
+<link rel="stylesheet" href="angular-scrollable-table.css">
+<body ng-app="myApp" ng-controller="TableController">
+    <scrollable-table watch="data">
+        <table class="grid hover">
+            <thead>
+                <tr>
+                    <th ng-repeat="head in data.cols">{{head}}</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="line in data.data">
+                <td>{{line[0]}}</td>
+                <td>{{line[1]}}</td>
+                <td>{{line[2]}}</td>
+                <td>{{line[3]}}</td>
+            </tr>
+        </table>
+    </scrollable-table>
+</body>
