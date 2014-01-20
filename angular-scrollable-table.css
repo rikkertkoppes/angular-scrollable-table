@@ -16,9 +16,7 @@
     }
 
     .scrollArea table thead th {
-        position: static;
         padding: 0;
-        border: none;
     }
 
     .scrollArea table .th-inner {
