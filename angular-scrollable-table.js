@@ -50,8 +50,9 @@
         }
 
         ctrl.fixHeaderWidths = function() {
-          if(!$element.find("thead th .th-inner").length)
+          if(!$element.find("thead th .th-inner").length) {
             $element.find("thead th").wrapInner('<div class="th-inner"></div>');
+          }
 
           $element.find("table th .th-inner").each(function(index, el) {
             el = $(el);
@@ -89,8 +90,16 @@
         $scope.sortAttr = $attrs.sortAttr;
       }],
       link: function($scope,$element,attrs,ctrl) {
-        var offset = $element.find(".headerSpacer").height();
-        $element.find(".scrollableContainer").css('paddingTop',offset);
+        var offset = 0;
+
+        $timeout(function() {
+          //template rendered
+          offset = $element.find('thead tr').height();
+          $element.find(".scrollableContainer").css('paddingTop',offset);
+          //wrap headers
+          $timeout(ctrl.fixHeaderWidths);
+        });
+
         $scope.$on('rowSelected', function(event, rowId) {
           var scrollArea = $element.find(".scrollArea");
           var row = scrollArea.find("table tr[row-id='" + rowId + "']");
@@ -99,8 +108,6 @@
             $element.find(".scrollArea").scrollTop(currentScrollTop + row.position().top - offset);
           }
         });
-
-        ctrl.fixHeaderWidths();
       }
     };
   }])
